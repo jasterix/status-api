@@ -2,44 +2,52 @@
 <html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" type="text/css" href="assets/semantic-ui-css/semantic.min.css">
-
-    <link href="src/index.css" rel="stylesheet">
+    <link href="assets/index.css" rel="stylesheet">
     <meta charset="utf-8">
     <title>Status</title>
   </head>
   <body>
-
     <div class="sidebar">
-
       <div class="ui secondary vertical pointing menu">
-
         <nav>
         <title>Status Codes</title>
-        <ul>
-          <li><a class="item" href="#">Walk</a></li>
-          <li><a class="item" href="#">Bike</a></li>
-          <li><aclass="item" href="#">Code Name </a></li>
-        </ul>
-      </nav>
+          <ul>
+            <li><a class="item" href="#">Walk</a></li>
+            <li><a class="item" href="#">Bike</a></li>
+            <li><aclass="item" href="#">Code Name </a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
 
-    <main class = "ui four column doubling stackable grid container">
-      <div id="status-container">
+<!-- ////////////////////////////END OF SIDEBAR SECTION -->
+<!-- ////////////////////////////BEGINNING OF CONTAINER DIV-->
 
-      </div>
-    </main>
-    <main id="status-container">
-    <div class="ui four cards">
+<!-- ////hidden form -->
+    <container class="saveBoard-container" style="display: none">
+      <form class="save-board-form" style="">
+        <h3>Save your board!!</h3>
+        <input id="boardname" type="text" name="name" value="" placeholder="Enter a name for this board..." class="input-text">
+        <br>
+        <input type = "hidden"  type="text" name="urls" value="" placeholder="Enter your username..." class="input-text">
+        <br>
+        <input type="submit" name="submit" value="Save" class="submit">
+      </form>
+    </container>
+
+    <div>
+      <p style='text-align:center'><button id='new-board-btn'>Saveth thou board!</button></p>
+    </div>
+
+  <main id="status-container">
+      <!-- <div class = "ui four column doubling stackable grid container"> -->
+    <div class="ui four cards img-list">
 
     </div>
   </main>
 
-  <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-      crossorigin="anonymous"></script>
-    <script src="semantic/dist/semantic.min.js"></script>
-    <script src="src/index.js" charset="utf-8"></script>
-
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <script src="semantic/dist/semantic.min.js"></script>
+  <script src="src/index.js" charset="utf-8"></script>
   </body>
 </html>

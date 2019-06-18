@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "some username"
+    },
+    {
+      "username": "[object HTMLInputElement]",
+      "id": 2
+    },
+    {
+      "username": "",
+      "id": 3
+    }
+  ],
+  "boards": [
+    {
+      "id": 1,
+      "name": "something",
+      "search": "search term",
+      "user_id": 1
+    }
+  ],
+  "tiles": [
+    {
+      "id": 1,
+      "status_code": "200",
+      "img_url": "hello.com",
+      "status_description": "something",
+      "board_id": 1
+    }
+  ]
+}

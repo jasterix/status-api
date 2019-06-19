@@ -7,21 +7,6 @@
     <title>Status</title>
   </head>
   <body>
-    <div class="sidebar">
-      <div class="ui secondary vertical pointing menu">
-        <nav>
-        <title>Status Codes</title>
-          <ul>
-            <li><a class="item" href="#">Walk</a></li>
-            <li><a class="item" href="#">Bike</a></li>
-            <li><aclass="item" href="#">Code Name </a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-
-<!-- ////////////////////////////END OF SIDEBAR SECTION -->
-<!-- ////////////////////////////BEGINNING OF CONTAINER DIV-->
 
 <!-- ////hidden form -->
     <container class="saveBoard-container" style="display: none">
@@ -35,17 +20,47 @@
       </form>
     </container>
 
-    <div>
-      <p style='text-align:center'><button id='new-board-btn'>Saveth thou board!</button></p>
+<!-- ////////////////////////////BEGINNING OF DISPLAY DIV-->
+
+<div class = "box">
+    <div class="sidebar">
+      <div class="ui secondary vertical pointing menu">
+        <nav>
+        <title>Status Codes</title>
+          <ul>
+            <li><a class="status-code" href="#">200 OK</a></li>
+            <li><a class="status-code" href="#">300 Multiple Choices</a></li>
+            <li><a class="status-code" href="#">301 Moved Permanently</a></li>
+            <li><a class="status-code" href="#">302 Found</a></li>
+            <li><a class="status-code" href="#">304 Not Modified</a></li>
+            <li><a class="status-code" href="#">307 Temporary Redirect</a></li>
+            <li><a class="status-code" href="#">400 Bad Request</a></li>
+            <li><a class="status-code" href="#">401 Unauthorized</a></li>
+            <li><a class="status-code" href="#">403 Forbidden</a></li>
+            <li><a class="status-code" href="#">404 Not Found</a></li>
+            <li><a class="status-code" href="#">410 Gone</a></li>
+            <li><a class="status-code" href="#">500 Internal Server Error</a></li>
+            <li><a class="status-code" href="#">501 Not Implemented</a></li>
+            <li><a class="status-code" href="#">503 Service Unavailable</a></li>
+            <li><a class="status-code" href="#">550 Permission denied</a></li>
+
+          </ul>
+        </nav>
+      </div>
     </div>
+    <!-- ////////////////////////////END OF SIDEBAR SECTION -->
+    <div class = "bottom">
+      <button id='new-board-btn'>Saveth thou board!</button>
 
-  <main id="status-container">
-      <!-- <div class = "ui four column doubling stackable grid container"> -->
-    <div class="ui four cards img-list">
-
+      <main id="status-container">
+          <!-- <div class = "ui four column doubling stackable grid container"> -->
+        <div class="ui four cards img-list">
+        </div>
+      </main>
     </div>
-  </main>
+  </div>
 
+<!-- ///////////////////////////BEGINNING OF JAVASCRIPT SOURCES ///////////////// -->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="semantic/dist/semantic.min.js"></script>
   <script src="src/index.js" charset="utf-8"></script>

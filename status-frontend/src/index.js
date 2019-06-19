@@ -5,37 +5,49 @@ const saveBoard = document.querySelector(".saveBoard-container")
 let addBoard = false;
 let urls
 
-const createTile = (gif) => {
+function getRandomInt() {
+  return Math.floor(Math.random() * Math.floor(30));
+}
+
+const statusCodes = ["200 OK", "300 Multiple Choices", "301 Moved Permanently", "302 Found", "304 Not Modified", 
+"307 Temporary Redirect", "400 Bad Request", "401 Unauthorized", "403 Forbidden", "404 Not Found", 
+"410 Gone", "500 Internal Server Error", "501 Not Implemented", "503 Service Unavailable", 
+"550 Permission denied"]
+
+const createTile = (gif, code, description) => {
   return(`
   <a class="blue card">
-    <div class ="image ui list" >
-    <img data-url = ${gif.images.original.url} class="img ui medium image" src ="${gif.images.original.url}">
-    <input id="boardurls" data-url = ${gif.images.original.url} type = "hidden"> </input>
+    <div class ="image ui list">
+    <h1 id=${code}>${code} - ${description}</h1>
+    <img class="img ui medium image" src="${gif.images.original.url}">
     </div>
     </a>`)
 }
 
-document.addEventListener('click', (e) => {
-// console.log(e.target)
-// console.log(e.target.dataset.url)
+statusCodes.forEach(statusCode => {
+  let code = statusCode.split(" ")[0]
+  let description = statusCode.split(" ").slice(1).join(" ")
+  let num = getRandomInt()
 
-
-
+fetch(`https://api.giphy.com/v1/gifs/search?api_key=HDgQlOddDbNfFqqzsbHvWi17CPZ6X4JP&q=${description}&limit=1&offset=${num}&rating=G&lang=en`)
+  .then(response => response.json())
+  .then(data => {
+      imgDiv.innerHTML += createTile(data.data[0], code, description)
+  })
+})
 
 ////Save your board event listener
 saveBoard.addEventListener('submit', (event) => {
-  let urlTags = document.querySelectorAll("#boardurls")
+  event.preventDefault()
+  let boardName = document.querySelector("#boardname")
+  let urlTags = document.querySelectorAll(".image")
   let boardUrls = []
   urlTags.forEach(url => {
-    boardUrls.push(url.dataset.url)
+    boardUrls.push(url.src)
   })
   console.log(boardUrls)
-  // let username = document.querySelector("#username").value
-  event.preventDefault()
-  // let a = event.target.name.name
-  // console.log(event.target.dataset)
-  // console.log(event.target.name.url.value)
 
+  debugger
   fetch("http://localhost:3000/boards", {
     "method": "POST",
     "headers": {
@@ -44,12 +56,9 @@ saveBoard.addEventListener('submit', (event) => {
     },
     "body": JSON.stringify({
       name: event.target.name.value,
-      // search: event.target.image.value,
       urls: boardUrls
     })
   })
-})
-
 })
 
 saveButton.addEventListener('click', () => {
@@ -63,40 +72,3 @@ saveButton.addEventListener('click', () => {
     saveBoard.style.display = 'none'
   }
 })
-
-
-fetch('https://api.giphy.com/v1/gifs/search?api_key=HDgQlOddDbNfFqqzsbHvWi17CPZ6X4JP&q=404&limit=2&offset=0&rating=G&lang=en')
-    // .then(parsed => parsed.data[getRandomInt(0,100)].images.original.url)
-  .then(response => response.json())
-  .then(data => {
-      // debugger
-    data.data.forEach(gif => {
-      imgDiv.innerHTML += createTile(gif)
-    })
-    getUrls(data)
-
-  })
-
-const getUrls = (data) => {
-  urls = document.querySelectorAll("img")
-  return urls
-}
-
-
-
-
-
-      // console.log(data)
-
-          // <div class ="ui list">
-          // <img class="ui small image" src = "${gif.images.original.url}">
-          // </div>
-
-          //
-          // })
-
-          //   <a class="blue card">
-          //     <img class="img ui medium image" src ="${gif.images.original.url}">
-          //     <img>
-          //   </div>
-          // </a>

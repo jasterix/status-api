@@ -36,18 +36,18 @@ saveBoard.addEventListener('submit', (event) => {
   // console.log(event.target.dataset)
   // console.log(event.target.name.url.value)
 
-  // fetch("http://localhost:3000/boards", {
-  //   "method": "POST",
-  //   "headers": {
-  //     "Content-Type": "application/json",
-  //     "Accept": "application/json"
-  //   },
-  //   "body": JSON.stringify({
-  //     name: event.target.name.value,
-  //     search: event.target.image.value,
-  //     urls: boardUrls
-  //   })
-  // })
+  fetch("http://localhost:3000/boards", {
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    "body": JSON.stringify({
+      name: event.target.name.value,
+      // search: event.target.image.value,
+      urls: boardUrls
+    })
+  })
 })
 
 })

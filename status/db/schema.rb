@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_194343) do
+ActiveRecord::Schema.define(version: 2019_06_20_001715) do
 
   create_table "boards", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
-    t.string "search"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "urls", default: "{}"
+    t.string "codes", default: "{}"
   end
 
   create_table "tiles", force: :cascade do |t|

@@ -4,6 +4,7 @@ const saveButton = document.querySelector("#new-board-btn")
 const saveBoard = document.querySelector(".saveBoard-container")
 const saveBoardForm = document.querySelector(".save-board-form")
 const savedBoards = document.querySelector(".savedBoards")
+const tileContainer = document.querySelector(".cardContainer")
 let whole_board = []
 let addBoard = false;
 let urls
@@ -22,11 +23,11 @@ function displaySaved(){
 function createSavedBoardsLi(board){
   // debugger
   return `
-    <a href="#"><li class="saved">${board.attributes.name}</li></a>
+    <h3><a href="#"><li class="saved">${board.attributes.name}</li></a></h3>
   `
 }
 function getRandomInt() {
-  return Math.floor(Math.random() * Math.floor(10));
+  return Math.floor(Math.random() * Math.floor(5));
 }
 
 const statusCodes = ["200 OK", "300 Multiple Choices", "301 Moved Permanently", "302 Found", "304 Not Modified",
@@ -38,7 +39,7 @@ const createTile = (code, description) => {
   return(`
   <a class="blue card" id="status-${code}">
     <div class ="image ui list">
-    <h1 class = "statusCode" data-code =${code} id=${code}>${code} - ${description}</h1>
+    <h3 class = "statusCode" data-code =${code} id=${code}>${code} - ${description}</h3>
     </div>
     </a>`)
 }
@@ -106,7 +107,7 @@ saveBoard.addEventListener('submit', (event) => {
   }).then(resp => resp.json())
   .then(board => {
     savedBoards.lastElementChild.remove()
-    savedBoards.innerHTML = `<a href="#"><li class="saved">${board.name}</li></a>` + savedBoards.innerHTML 
+    savedBoards.innerHTML = `<h3><a href="#"><li class="saved">${board.name}</li></a></h3>` + savedBoards.innerHTML 
   })
 
   saveBoardForm.reset()
@@ -154,6 +155,26 @@ savedBoards.addEventListener("click", (event) => {
         }
       })
     }
+})
+
+tileContainer.addEventListener("click", (event) => {
+  tile = document.querySelector(".medium")
+  if (event.target.classList.contains("medium")){
+    let code = event.target.parentElement.innerText.split(" - ")[0]
+    let description = event.target.parentElement.innerText.split(" - ")[1]
+    let target = document.querySelector(`#status-${code}`)
+    let num = getRandomInt()
+    // debugger
+
+    fetch(`https://api.giphy.com/v1/gifs/search?api_key=HDgQlOddDbNfFqqzsbHvWi17CPZ6X4JP&q=${description}&limit=1&offset=${num}&rating=G&lang=en`)
+      .then(response => response.json())
+      .then(data => {
+        // debugger
+        target.querySelector('img').src = data.data[0].images.original.url
+      })
+    
+
+  }
 })
 
 

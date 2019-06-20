@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <link rel="stylesheet" type="text/css" href="assets/semantic-ui-css/semantic.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css" />
     <link href="assets/index.css" rel="stylesheet">
     <meta charset="utf-8">
     <title>Status</title>
@@ -11,7 +12,7 @@
 <!-- ////hidden form -->
     <container class="saveBoard-container" style="display: none">
       <form class="save-board-form" style="">
-        <h3>Save your board!!</h3>
+        <h2>Save your board!!</h2>
         <input id="boardname" type="text" name="name" value="" placeholder="Enter a name for this board..." class="input-text">
         <br>
         <input type = "hidden"  type="text" name="urls" value="" placeholder="Enter your username..." class="input-text">
@@ -21,53 +22,56 @@
     </container>
 
 <!-- ////////////////////////////BEGINNING OF DISPLAY DIV-->
-
-<div class = "box">
-
-  <div class="savedBoards">
-
-  </div>
-
-    <div class="sidebar">
-      <div class="ui secondary vertical pointing menu">
-        <nav>
-        <title>Status Codes</title>
-          <ul>
-            <li><a class="status-code" href="#200" >200 OK</a></li>
-            <li><a class="status-code" href="#300" >300 Multiple Choices</a></li>
-            <li><a class="status-code" href="#301" >301 Moved Permanently</a></li>
-            <li><a class="status-code" href="#302" >302 Found</a></li>
-            <li><a class="status-code" href="#304" >304 Not Modified</a></li>
-            <li><a class="status-code" href="#307" >307 Temporary Redirect</a></li>
-            <li><a class="status-code" href="#400" >400 Bad Request</a></li>
-            <li><a class="status-code" href="#401" >401 Unauthorized</a></li>
-            <li><a class="status-code" href="#403" >403 Forbidden</a></li>
-            <li><a class="status-code" href="#404" >404 Not Found</a></li>
-            <li><a class="status-code" href="#410" >410 Gone</a></li>
-            <li><a class="status-code" href="#500" >500 Internal Server Error</a></li>
-            <li><a class="status-code" href="#501" >501 Not Implemented</a></li>
-            <li><a class="status-code" href="#502" >503 Service Unavailable</a></li>
-            <li><a class="status-code" href="#550" >550 Permission denied</a></li>
-
-          </ul>
-        </nav>
+      <div id = "saveth">
+        <h2><button id='new-board-btn'>Saveth thou board!</button></h2>
       </div>
+<div class = "box">
+  
+
+  <div class="sidebar">
+    <div class="ui secondary vertical pointing menu">
+      <nav>
+        <title>Status Codes</title>
+        <ul>
+          <li><a class="status-code" href="#200" >200 OK</a></li>
+          <li><a class="status-code" href="#300" >300 Multiple Choices</a></li>
+          <li><a class="status-code" href="#301" >301 Moved Permanently</a></li>
+          <li><a class="status-code" href="#302" >302 Found</a></li>
+          <li><a class="status-code" href="#304" >304 Not Modified</a></li>
+          <li><a class="status-code" href="#307" >307 Temporary Redirect</a></li>
+          <li><a class="status-code" href="#400" >400 Bad Request</a></li>
+          <li><a class="status-code" href="#401" >401 Unauthorized</a></li>
+          <li><a class="status-code" href="#403" >403 Forbidden</a></li>
+          <li><a class="status-code" href="#404" >404 Not Found</a></li>
+          <li><a class="status-code" href="#410" >410 Gone</a></li>
+          <li><a class="status-code" href="#500" >500 Internal Server Error</a></li>
+          <li><a class="status-code" href="#501" >501 Not Implemented</a></li>
+          <li><a class="status-code" href="#502" >503 Service Unavailable</a></li>
+          <li><a class="status-code" href="#550" >550 Permission denied</a></li>
+          
+        </ul>
+      </nav>
     </div>
-    <!-- ////////////////////////////END OF SIDEBAR SECTION -->
-    <div class = "bottom">
-      <button id='new-board-btn'>Saveth thou board!</button>
+  </div>
+  <!-- ////////////////////////////END OF SIDEBAR SECTION -->
+
+  <div class = "bottom">
+  
+                        <div class="savedBoards">
+                      
+                        </div>
 
       <main id="status-container">
           <!-- <div class = "ui four column doubling stackable grid container"> -->
-        <div class="ui four cards img-list">
+        <div class="cardContainer ui four cards img-list">
         </div>
       </main>
     </div>
   </div>
 
 <!-- ///////////////////////////BEGINNING OF JAVASCRIPT SOURCES ///////////////// -->
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <script src="semantic/dist/semantic.min.js"></script>
+  
+  
   <script src="src/index.js" charset="utf-8"></script>
   </body>
 </html>

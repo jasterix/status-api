@@ -61,45 +61,17 @@ fetch("http://localhost:3000/boards")
     let new_arr = boards.data.slice(-5)
     new_arr.forEach(board => {
       // debugger
-      savedBoards.innerHTML += createSavedBoardsLi(board)
+      savedBoards.innerHTML = createSavedBoardsLi(board) + savedBoards.innerHTML
     })
   })
 
-////Save your board event listener
+//////////////////////////////SAVE THE CURRENT BOARD//////////////////////
 saveBoard.addEventListener('submit', (event) => {
   event.preventDefault()
   let boardName = document.querySelector("#boardname").value
-
-
-  ///////////SAVE THE URLS TO A LIST//////////////////////////////
   let boardUrls = []
   let urlTags = document.querySelectorAll(".img")
-  urlTags.forEach(url => {
-    boardUrls.push(url.src)
 
-  })
-
-
-  console.log(boardUrls)
-
-
-
-
-/////////////////////////SAVE STATUS CODES TO A LIST//////////////////
-let boardStatusCodes = []
-let statusCodeTags = document.querySelectorAll(".statusCode")
-statusCodeTags.forEach(code => {
-  boardStatusCodes.push(code.textContent)
-})
-console.log(boardStatusCodes)
-
-
-// console.log(board_content)
-
-
-
-
-  //////////////////////////////SAVE THE CURRENT BOARD//////////////////////
   fetch("http://localhost:3000/boards", {
     "method": "POST",
     "headers": {
@@ -108,9 +80,12 @@ console.log(boardStatusCodes)
     },
     "body": JSON.stringify({
       name: boardName,
-      urls: boardUrls,
-      codes: boardStatusCodes
+      urls: boardUrls
     })
+  }).then(resp => resp.json())
+  .then(board => {
+    // debugger
+    savedBoards.innerHTML = `<a href="#"><li class="saved">${board.name}</li></a>` + savedBoards.innerHTML
   })
 })
 
@@ -128,7 +103,7 @@ saveButton.addEventListener('click', () => {
 
 savedBoards.addEventListener("click", (event) => {
   let saved = document.querySelector("#saved")
-  let images = document.querySelectorAll("#image")
+  let images = document.querySelectorAll(".medium")
   let clicked
 
   if (event.target.classList.contains("saved")){
@@ -136,11 +111,14 @@ savedBoards.addEventListener("click", (event) => {
       .then(resp => resp.json())
       .then(boards => {
         clicked = boards.data.find(board => board.attributes.name === event.target.innerHTML).attributes.urls
+        clicked = clicked.slice(2, -2).split(`\", \"`)
 
-      
+        for (let i = 0; i < 15; i++) {
+          images[i].src = clicked[i]
+          // debugger
+        }
       })
     }
-    debugger
 })
 
 

@@ -18,6 +18,7 @@
   float: right;
   background-color: yellow;
   max-width: 700px;
+  height:100%;
 }
 
 .saveBoard-container {

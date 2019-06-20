@@ -2,11 +2,23 @@ const imgDiv = document.querySelector('.img-list')
 const submitButton = document.querySelector("input.submit")
 const saveButton = document.querySelector("#new-board-btn")
 const saveBoard = document.querySelector(".saveBoard-container")
+const saveBoardForm = document.querySelector(".save-board-form")
 const savedBoards = document.querySelector(".savedBoards")
 let whole_board = []
 let addBoard = false;
 let urls
 
+function displaySaved(){
+  fetch("http://localhost:3000/boards")
+    .then(resp => resp.json())
+    .then(boards => {
+      let new_arr = boards.data.slice(-5)
+      new_arr.forEach(board => {
+        // debugger
+        savedBoards.innerHTML = createSavedBoardsLi(board) + savedBoards.innerHTML
+      })
+    })
+}
 function createSavedBoardsLi(board){
   // debugger
   return `
@@ -14,7 +26,7 @@ function createSavedBoardsLi(board){
   `
 }
 function getRandomInt() {
-  return Math.floor(Math.random() * Math.floor(5));
+  return Math.floor(Math.random() * Math.floor(10));
 }
 
 const statusCodes = ["200 OK", "300 Multiple Choices", "301 Moved Permanently", "302 Found", "304 Not Modified",
@@ -65,13 +77,22 @@ fetch("http://localhost:3000/boards")
     })
   })
 
-//////////////////////////////SAVE THE CURRENT BOARD//////////////////////
+////Save your board event listener
 saveBoard.addEventListener('submit', (event) => {
   event.preventDefault()
   let boardName = document.querySelector("#boardname").value
+
+
+  ///////////SAVE THE URLS TO A LIST//////////////////////////////
   let boardUrls = []
   let urlTags = document.querySelectorAll(".img")
+  urlTags.forEach(url => {
+    boardUrls.push(url.src)
 
+  })
+
+
+  //////////////////////////////SAVE THE CURRENT BOARD//////////////////////
   fetch("http://localhost:3000/boards", {
     "method": "POST",
     "headers": {
@@ -84,11 +105,25 @@ saveBoard.addEventListener('submit', (event) => {
     })
   }).then(resp => resp.json())
   .then(board => {
-    // debugger
-    savedBoards.innerHTML = `<a href="#"><li class="saved">${board.name}</li></a>` + savedBoards.innerHTML
+    savedBoards.lastElementChild.remove()
+    savedBoards.innerHTML = `<a href="#"><li class="saved">${board.name}</li></a>` + savedBoards.innerHTML 
   })
+
+  saveBoardForm.reset()
 })
 
+
+
+/////////////////////////////////////////HIDE FORM////////////////////////
+saveBoardForm.addEventListener("submit", () => {
+  addBoard = !addBoard
+  if (addBoard) {
+    saveBoard.style.display = 'block'
+    // submit listener here
+  } else {
+    saveBoard.style.display = 'none'
+  }
+})
 
 //////////////////////////////DISPLAY SAVE BOARD FORM///////////////////////
 saveButton.addEventListener('click', () => {
@@ -113,7 +148,7 @@ savedBoards.addEventListener("click", (event) => {
         clicked = boards.data.find(board => board.attributes.name === event.target.innerHTML).attributes.urls
         clicked = clicked.slice(2, -2).split(`\", \"`)
 
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < clicked.length; i++) {
           images[i].src = clicked[i]
           // debugger
         }

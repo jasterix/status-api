@@ -190,3 +190,25 @@ var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
 scrollbar
 // Delete the DIV
 document.body.removeChild(scrollDiv);
+
+
+////////////FIXED/ STICKY MENU
+window.onload = function() {
+
+    // Variables
+    var nav = document.querySelector('.nav');
+    var navTop = nav.offsetTop;
+
+     // Functions
+    function navFixed(e) {
+        if(window.scrollY >= navTop) {
+            nav.classList.add('is-fixed');
+        } else {
+            nav.classList.remove('is-fixed');
+        }
+    }
+
+    // Event Listener
+    window.addEventListener('scroll', navFixed);
+
+}

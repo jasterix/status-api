@@ -1,4 +1,7 @@
 
+html {
+  scroll-behavior: smooth;
+}
 .tile {
   width: 800px;
   height: 800px;
@@ -45,7 +48,18 @@
   border-radius: 10px;
   border: 3px solid rebeccapurple;
   box-shadow: 5px 5px 2px 1px rgba(115,15,173, .2);
+
 }
+
+li.saved {
+  font-size: 24px;
+}
+li:hover {
+  color: rebeccapurple;
+  font-weight: bold;
+  font-size: 30px;
+}
+
 
 
 
@@ -57,10 +71,17 @@
 }
 
 .cardContainer {
-  float: left;
+  /* float: left; */
   background-color: rgba(251, 247, 236, .5);
   width: 80%;
-  float: none
+  height:1200px;
+  float: none;
+  overflow: scroll;
+  width: fit-content;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 input[type=text] {
@@ -114,6 +135,7 @@ ul {
 #new-board-btn {
   align-content: stretch;
   margin: 10px 0 50px 0;
+  font-weight: bolder;
 }
 
 #saveth {
@@ -144,4 +166,20 @@ a:hover {
   color: rebeccapurple;
   font-weight: bold;
   font-size: 24px;
+}
+
+.nav {
+    position: absolute;
+    bottom: 0;
+    background: white;
+    width: 100%;
+    text-align: center;
+}
+
+.nav.is-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: unset;
 }

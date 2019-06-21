@@ -74,7 +74,8 @@ fetch("http://localhost:3000/boards")
   .then(boards => {
     let new_arr = boards.data.slice(-5)
     new_arr.forEach(board => {
-      // debugger
+      // debuggersaved
+
       savedBoards.innerHTML = createSavedBoardsLi(board) + savedBoards.innerHTML
     })
   })

@@ -37,7 +37,13 @@
   background-color: aqua;
   /* margin: 10px 5px 5px 10px; */
   /* background-color: white; */
-  float: left
+  margin-right: 40px;
+  padding: 10px;
+  float: left;
+  height: 800px;
+ overflow: scroll;
+
+  
 }
 
  .savedBoards {
@@ -66,7 +72,7 @@
 .cardContainer {
   float: left;
   background-color: blue;
-  width: 80%;
+  width: 75%;
   /* margin-left: 200px; */
   float: none
   /* max-height: 200%; */

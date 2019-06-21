@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_20_001715) do
+ActiveRecord::Schema.define(version: 2019_06_21_153858) do
 
   create_table "boards", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_06_20_001715) do
     t.datetime "updated_at", null: false
     t.string "urls", default: "{}"
     t.string "codes", default: "{}"
+    t.integer "likes", default: 0
   end
 
   create_table "tiles", force: :cascade do |t|

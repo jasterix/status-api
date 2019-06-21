@@ -29,9 +29,9 @@ class BoardsController < ApplicationController
 
       # end
       # debugger
-      @board = Board.create(get_params)
+    @board = Board.create(get_params)
 
-      render json: @board, status: :ok
+    render json: @board, status: :ok
     end
 
 

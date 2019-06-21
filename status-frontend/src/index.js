@@ -36,7 +36,7 @@ let search = ["100 continue", "101 switching", "102 processing", "103 hints", "2
 
 const createTile = (code, description) => {
   return(`
-  <a class="blue card" id="status-${code}">
+  <a class="purple card" id="status-${code}">
     <div class ="image ui list">
     <h3 class = "statusCode" data-code =${code} id=${code}>${code} - ${description}</h3>
     </div>
@@ -57,7 +57,7 @@ search.forEach(statusCode => {
   let description = statusCode.split(" ").slice(1).join(" ")
   let target = document.querySelector(`#status-${code}`)
   let num = getRandomInt()
-  
+
   var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 
   fetch(proxyUrl + `https://api.giphy.com/v1/gifs/search?api_key=HDgQlOddDbNfFqqzsbHvWi17CPZ6X4JP&q=${description}&limit=1&offset=${num}&rating=G&lang=en`)
@@ -108,7 +108,7 @@ saveBoard.addEventListener('submit', (event) => {
   }).then(resp => resp.json())
   .then(board => {
     savedBoards.lastElementChild.remove()
-    savedBoards.innerHTML = `<h3><a href="#"><li class="saved">${board.name}</li></a></h3>` + savedBoards.innerHTML 
+    savedBoards.innerHTML = `<h3><a href="#"><li class="saved">${board.name}</li></a></h3>` + savedBoards.innerHTML
   })
 
   saveBoardForm.reset()
@@ -174,16 +174,20 @@ tileContainer.addEventListener("click", (event) => {
         // debugger
         target.querySelector('img').src = data.data[0].images.original.url
       })
-    
+
 
   }
 })
 
 
+// Create the measurement node
+var scrollDiv = document.createElement("div");
+scrollDiv.className = "scrollbar-measure";
+document.body.appendChild(scrollDiv);
 
-////////
-  // let board_content = {
-  //   name: boardName,
-  //   urls: boardUrls
-  // }
-  // whole_board.push(board_content)
+// Get the scrollbar width
+var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+// console.warn(scrollbarWidth); // Mac:  15
+scrollbar
+// Delete the DIV
+document.body.removeChild(scrollDiv);

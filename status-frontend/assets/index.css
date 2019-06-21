@@ -1,13 +1,12 @@
-
 .tile {
-  width: 800px;
-  height: 800px;
+  width: 700px;
+  height: 700px;
   display: flex;
 }
 
 .ui.medium.image {
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
   margin-left: auto;
   margin-right: auto;
   /* margin: auto;  */
@@ -17,37 +16,37 @@
 
 /* #status-container {
   /* display: inline; */
+float: right;
+background-color: yellow;
+max-width: 700px;
+height:80%;
+}
 
-  float: right;
-  background-color: yellow;
-  max-width: 700px;
-  height:80%;
-} */
-
-.saveBoard-container {
+*/ .saveBoard-container {
   background-color: red;
-  padding: 40px;
+  padding: 30px;
   /* align-content: space-between; */
 }
 
 .sidebar {
   line-height: 2em;
   border-radius: 10px;
-  border-color: black;
-  background-color: aqua;
+  /* border-color: black; */
+  background-color: white;
+  border-radius: 5px solid rgba(231,231,231,.8);
   /* margin: 10px 5px 5px 10px; */
-  /* background-color: white; */
-  margin-right: 40px;
+  /* background-color: white; ;*/
+  border: 1px solid rgba(113,113,113,.8);
+  margin-top: 10px;
   padding: 10px;
   float: left;
   height: 800px;
- overflow: scroll;
-
-  
+  overflow: scroll;
+  width: fit-content;
 }
 
- .savedBoards {
-   line-height: 1em;
+.savedBoards {
+  line-height: 1em;
   border-radius: 10px;
   border-color: black;
   background-color: white;
@@ -56,54 +55,61 @@
   width: fit-content;
   padding: 10px;
   margin: 10px 20px 10px 5px;
- }
+}
 
 .sidebar li {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .box {
-  background-color: grey;
+  background-color: rgba(251,247,236,.5);
   width: 100%;
-  max-height: 100%;
+  height: 100%;
   margin: 5px;
 }
 
 .cardContainer {
   float: left;
-  background-color: blue;
+  background-color: rgba(251,247,236,.5);
   width: 75%;
   /* margin-left: 200px; */
   float: none
-  /* max-height: 200%; */
+    /* max-height: 200%; */
 }
-input[type=text]{
+
+input[type=text] {
   width: 300px;
-  height: 30px;
+  height: 2em;
+  font-size: 18px;
   border: none;
   padding: 10px;
   border-radius: 5px;
 }
 
 input.submit {
-  width: 100px;
+  width: 150px;
   float: right;
-}
+  background-color: rebeccapurple;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 20px;
 
+}
 
 .save-board-form {
   width: 300px;
+
 }
 
 .bottom {
-  background-color: purple;
+  /* background-color: peach; */
   width: 100%;
-  height: 500px;
-  padding-inline-start: 10px;
+  height: auto;
+  /* padding-inline-start: 10px; */
 }
 
 .img {
-  
   width: 100%;
   /* padding-top: 100%; */
 }
@@ -112,7 +118,6 @@ input.submit {
   font-size: 20px;
   text-align: center;
   color: rebeccapurple;
-  
 }
 
 li {
@@ -120,15 +125,14 @@ li {
   color: black;
 }
 
-
 ul {
-  padding-inline-start: 10px;
-}
+  padding-inline-start: 5px;
 
+}
 
 .saveBoard-container {
   margin-top: 30px;
-  padding-inline-start: 15px;
+  padding-inline-start: 5px;
 }
 
 #new-board-btn {
@@ -140,6 +144,7 @@ ul {
   display: inline;
   text-align: center;
   margin: 5px;
+  margin-bottom: 20px;
 }
 
 #new-board-btn {
@@ -148,4 +153,9 @@ ul {
   /* border-color: rebeccapurple; */
   border: 1px solid rebeccapurple;
   /* background-color: ` */
+}
+a:hover {
+  color: rebeccapurple;
+  font-weight: bold;
+  font-size: 20px;
 }

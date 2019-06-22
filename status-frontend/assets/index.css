@@ -27,12 +27,13 @@ html {
   /* border-color: black; */
   background-color: white;
   border: 1px solid rgba(113,113,113,.8);
-  margin: 10px 0 0 40px;
+  margin: 10px 0 0 10px;
   padding: 10px;
   float: left;
   height: 800px;
   overflow: scroll;
-  width: fit-content;
+  overflow-wrap: normal;
+  /* width: fit-content; */
 }
 
 .savedBoards {
@@ -43,21 +44,21 @@ html {
   color: black;
   float: right;
   width: fit-content;
-  padding: 10px 40px 10px 40px;
-  margin: 10px 60px 10px 5px;
-  border-radius: 10px;
+  padding: 10px 10px 10px 10px;
+  margin: 10px 40px 10px 5px;
+  border-radius: 5px;
   border: 3px solid rebeccapurple;
   box-shadow: 5px 5px 2px 1px rgba(115,15,173, .2);
 
 }
 
 li.saved {
-  font-size: 24px;
+  font-size: 20px;
 }
 li:hover {
   color: rebeccapurple;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 
@@ -152,20 +153,20 @@ ul {
 }
 
 .sidebar a {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.5em;
 }
 
 li {
   list-style: none;
-  padding-inline-start: 5px;
+  /* padding-inline-start: 5px; */
   color: black;
 }
 
 a:hover {
   color: rebeccapurple;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .nav {

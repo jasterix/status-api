@@ -4,13 +4,21 @@ class BoardsController < ApplicationController
 
   def index
     render json: BoardSerializer.new(Board.all)
+    
   end
 
   def show
-    options = {
-    include: [:name, :urls]
-  }
-    render json: BoardSerializer.new(Board.find(params[:id]),options)
+    # options = {
+    # include: [:name, :urls]
+    # }
+    # render json: BoardSerializer.new(Board.find(params[:id]),options)
+    render json: BoardSerializer.new(Board.find(params[:id]))
+  end
+
+  def update
+    board = BoardSerializer.new(Board.find(get_params[:id]))
+    board.update(get_params)
+    render json: BoardSerializer.new(Board.find(get_params[:id]))
   end
 
   def create
@@ -29,15 +37,16 @@ class BoardsController < ApplicationController
 
       # end
       # debugger
-      @board = Board.create(get_params)
+    @board = Board.create(get_params)
 
-      render json: @board, status: :ok
+    render json: @board, status: :ok
     end
 
 
   private
 
   def get_params
-    params.require(:board).permit!
+    # params.require(:board).permit(:name, :id, :urls, :codes)
+    params.permit(:board)
   end
 end

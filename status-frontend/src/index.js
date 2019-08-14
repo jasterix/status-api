@@ -13,7 +13,7 @@ function displaySaved(){
   fetch("http://localhost:3000/boards")
     .then(resp => resp.json())
     .then(boards => {
-      let new_arr = boards.data.slice(-5)
+      let new_arr = boards.data
       new_arr.forEach(board => {
         savedBoards.innerHTML = createSavedBoardsLi(board) + savedBoards.innerHTML
       })
@@ -59,10 +59,11 @@ search.forEach(statusCode => {
 
   var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 
-  fetch(proxyUrl + `https://api.giphy.com/v1/gifs/search?api_key=HDgQlOddDbNfFqqzsbHvWi17CPZ6X4JP&q=${description}&limit=1&offset=${num}&rating=G&lang=en`)
+  fetch(`https://api.giphy.com/v1/gifs/search?api_key=HDgQlOddDbNfFqqzsbHvWi17CPZ6X4JP&q=${description}&limit=1&offset=${num}&rating=G&lang=en`)
     .then(response => response.json())
     .then(data => {
       target.innerHTML += `<img class="img ui medium image" src="${data.data[0].images.original.url}">`
+
   })
 })
 
@@ -70,7 +71,7 @@ search.forEach(statusCode => {
 fetch("http://localhost:3000/boards")
   .then(resp => resp.json())
   .then(boards => {
-    let new_arr = boards.data.slice(-5)
+    let new_arr = boards.data
     new_arr.forEach(board => {
       savedBoards.innerHTML = createSavedBoardsLi(board) + savedBoards.innerHTML
     })
@@ -107,7 +108,12 @@ saveBoard.addEventListener('submit', (event) => {
     console.log(board)
     // savedBoards.lastElementChild.remove()
     if (board.id) { 
-      savedBoards.innerHTML = `<h3><a href="#"><li class="saved">${board.name}</li></a></h3>` + savedBoards.innerHTML
+      savedBoards.innerHTML = `
+    <h3>
+    <a href="#"><li class="saved" data-id="${board.id}" >${board.name}</li></a><button class="like-btn" style="background-color: transparent; border: none;" data-id="${board.id}">${board.likes} 💜 </button>
+    </h3>
+  ` + savedBoards.innerHTML
+      // debugger
     } else {
       alert("thou shall not pass, chooseth another name")
     }
@@ -142,16 +148,16 @@ saveButton.addEventListener('click', () => {
 })
 
 savedBoards.addEventListener("click", (event) => {
-  let likeButton = document.querySelector(".like-btn")
+  let likeButton = event.target
   let images = document.querySelectorAll(".medium")
   let clicked
   let likesText = parseInt(likeButton.innerText.split(" ")[0])
+
 
   if (event.target.classList.contains("saved")){
     fetch("http://localhost:3000/boards")
       .then(resp => resp.json())
       .then(boards => {
-        // debugger
         clicked = boards.data.find(board => board.id === event.target.dataset.id).attributes.urls
         clicked = clicked.slice(2, -2).split(`\", \"`)
 
@@ -159,23 +165,25 @@ savedBoards.addEventListener("click", (event) => {
           images[i].src = clicked[i]
         }
       })
-    } else if (event.target === likeButton) {
+    } else if (event.target.classList.contains("like-btn")) {
     
-//     let updatedLikes = likesText++
-//     // debugger
-//     fetch(`http://localhost:3000/boards/${event.target.dataset.id}`, {
-//       method: "PATCH",
-//       headers: {
-//         'Content-Type' : "application/json",
-//         'Accept': "application/json"
-//       },
-//       body: JSON.stringify({likes: updatedLikes})
-//       .then(res => res.json())
-//       .then(board => {
-//         likeButton.innerHTML = board.likes
-//       })
-//   })
-// })
+    let updatedLikes = likesText += 1
+    console.log(event.target)
+    fetch(`http://localhost:3000/boards/${event.target.dataset.id}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type' : "application/json",
+        'Accept': "application/json",
+        'Access-Control-Allow-Origin': "http://localhost:3000"
+      },
+      body: JSON.stringify({likes: updatedLikes})
+    })
+    .then(res => res.json())
+    .then(board => {
+      likeButton.innerHTML = board.data.attributes.likes + " 💜"
+  })
+}
+})
 
   
 tileContainer.addEventListener("click", (event) => {
@@ -187,10 +195,10 @@ tileContainer.addEventListener("click", (event) => {
     let target = document.querySelector(`#status-${code}`)
     
     let num = getRandomInt()
-
     fetch(`https://api.giphy.com/v1/gifs/search?api_key=HDgQlOddDbNfFqqzsbHvWi17CPZ6X4JP&q=${description}&limit=1&offset=${num}&rating=G&lang=en`)
       .then(response => response.json())
       .then(data => {
+        // debugger
         target.querySelector('img').src = data.data[0].images.original.url
       })
 
@@ -209,7 +217,7 @@ document.body.appendChild(scrollDiv);
 // Get the scrollbar width
 var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
 // console.warn(scrollbarWidth); // Mac:  15
-scrollbar
+// scrollbar
 // Delete the DIV
 document.body.removeChild(scrollDiv);
 

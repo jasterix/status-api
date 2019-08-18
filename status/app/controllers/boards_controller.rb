@@ -16,9 +16,10 @@ class BoardsController < ApplicationController
   end
 
   def update
-    board = BoardSerializer.new(Board.find(get_params[:id]))
-    board.update(get_params)
-    render json: BoardSerializer.new(Board.find(get_params[:id]))
+    board = Board.find(get_params[:id])
+    # debugger
+    board.update(likes: get_params[:likes])
+    render json: BoardSerializer.new(board)
   end
 
   def create
@@ -37,7 +38,7 @@ class BoardsController < ApplicationController
 
       # end
       # debugger
-    @board = Board.create(get_params)
+    @board = Board.create(name: get_params[:name], urls: get_params[:urls])
 
     render json: @board, status: :ok
     end
@@ -47,6 +48,6 @@ class BoardsController < ApplicationController
 
   def get_params
     # params.require(:board).permit(:name, :id, :urls, :codes)
-    params.permit(:board)
+    params.permit!
   end
 end

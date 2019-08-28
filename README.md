@@ -20,8 +20,8 @@ You will also see any lint errors in the console.
 
 ## Backend
 
-##### $ `cd status
-`
+##### $ `cd status`
+
 ## Available Scripts
 
 In the project directory, you can run:

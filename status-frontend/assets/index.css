@@ -2,11 +2,11 @@
 html {
   scroll-behavior: smooth;
 }
-.tile {
+/* .tile {
   width: 800px;
   height: 800px;
   display: flex;
-}
+} */
 
 .ui.medium.image {
   width: 300px;
@@ -22,9 +22,9 @@ html {
 }
 
 .sidebar {
+  width: 14%;
   line-height: 2em;
   border-radius: 10px;
-  /* border-color: black; */
   background-color: white;
   border: 1px solid rgba(113,113,113,.8);
   margin: 10px 0 0 10px;
@@ -43,9 +43,9 @@ html {
   background-color: white;
   color: black;
   float: right;
-  width: fit-content;
+  width: 11%;
   padding: 10px 10px 10px 10px;
-  margin: 10px 40px 10px 5px;
+  margin: 10px 20px 10px 0px;
   border-radius: 5px;
   border: 3px solid rebeccapurple;
   box-shadow: 5px 5px 2px 1px rgba(115,15,173, .2);
@@ -53,16 +53,16 @@ html {
 }
 
 li.saved {
-  font-size: 20px;
+  font-size: 16px;
+  display: flex;
+  width: fit-content;
+  float: left;
 }
 li:hover {
   color: rebeccapurple;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 18px;
 }
-
-
-
 
 .box {
   background-color: rgba(251, 247, 236, .5);
@@ -74,11 +74,11 @@ li:hover {
 .cardContainer {
   /* float: left; */
   background-color: rgba(251, 247, 236, .5);
-  width: 80%;
+  width: 72%;
   height:1200px;
   float: none;
   overflow: scroll;
-  width: fit-content;
+  /* width: fit-content; */
 }
 
 ::-webkit-scrollbar {
@@ -118,6 +118,7 @@ input.submit {
 }
 
 .statusCode {
+  padding-top: 10px;
   font-size: 20px;
   text-align: center;
   color: rebeccapurple;
@@ -153,7 +154,7 @@ ul {
 }
 
 .sidebar a {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5em;
 }
 
@@ -166,7 +167,7 @@ li {
 a:hover {
   color: rebeccapurple;
   font-weight: bold;
-  font-size: 22px;
+  /* font-size: 22px; */
 }
 
 .nav {
@@ -183,4 +184,9 @@ a:hover {
     left: 0;
     right: 0;
     bottom: unset;
+}
+
+.like-btn {
+  /* float: right; */
+  display: flex;
 }

@@ -107,7 +107,7 @@ saveBoard.addEventListener('submit', (event) => {
   .then(board => {
     console.log(board)
     // savedBoards.lastElementChild.remove()
-    if (board.id) { 
+    if (board.id) {
       savedBoards.innerHTML = `
     <h3>
     <a href="#"><li class="saved" data-id="${board.id}" >${board.name}</li></a><button class="like-btn" style="background-color: transparent; border: none;" data-id="${board.id}">${board.likes} 💜 </button>
@@ -117,7 +117,7 @@ saveBoard.addEventListener('submit', (event) => {
     } else {
       alert("thou shall not pass, chooseth another name")
     }
-    
+
   })
 
   saveBoardForm.reset()
@@ -166,7 +166,7 @@ savedBoards.addEventListener("click", (event) => {
         }
       })
     } else if (event.target.classList.contains("like-btn")) {
-    
+
     let updatedLikes = likesText += 1
     console.log(event.target)
     fetch(`http://localhost:3000/boards/${event.target.dataset.id}`, {
@@ -185,7 +185,7 @@ savedBoards.addEventListener("click", (event) => {
 }
 })
 
-  
+
 tileContainer.addEventListener("click", (event) => {
   tile = document.querySelector(".medium")
   var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
@@ -193,7 +193,7 @@ tileContainer.addEventListener("click", (event) => {
     let code = event.target.parentElement.innerText.split(" - ")[0]
     let description = event.target.parentElement.innerText.split(" - ")[1]
     let target = document.querySelector(`#status-${code}`)
-    
+
     let num = getRandomInt()
     fetch(`https://api.giphy.com/v1/gifs/search?api_key=HDgQlOddDbNfFqqzsbHvWi17CPZ6X4JP&q=${description}&limit=1&offset=${num}&rating=G&lang=en`)
       .then(response => response.json())

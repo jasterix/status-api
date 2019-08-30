@@ -2,11 +2,11 @@
 html {
   scroll-behavior: smooth;
 }
-/* .tile {
+.tile {
   width: 800px;
   height: 800px;
   display: flex;
-} */
+}
 
 .ui.medium.image {
   width: 300px;

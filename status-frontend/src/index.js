@@ -190,6 +190,7 @@ tileContainer.addEventListener("click", (event) => {
   tile = document.querySelector(".medium")
   var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
   if (event.target.classList.contains("medium")){
+    console.log("hi")
     let code = event.target.parentElement.innerText.split(" - ")[0]
     let description = event.target.parentElement.innerText.split(" - ")[1]
     let target = document.querySelector(`#status-${code}`)
@@ -198,7 +199,8 @@ tileContainer.addEventListener("click", (event) => {
     fetch(`https://api.giphy.com/v1/gifs/search?api_key=HDgQlOddDbNfFqqzsbHvWi17CPZ6X4JP&q=${description}&limit=1&offset=${num}&rating=G&lang=en`)
       .then(response => response.json())
       .then(data => {
-        // debugger
+        console.log(target.querySelector('img').src);
+        debugger
         target.querySelector('img').src = data.data[0].images.original.url
       })
 

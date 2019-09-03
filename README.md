@@ -1,5 +1,8 @@
 <h1 align="center">Status</h1>
 <h3 align="center">Status is a Giphy API that generates GIFs for assigned HTTP status codes</h3>
+<p align="center">
+<img src="https://media.giphy.com/media/huDymbVWlPdrSDCa1u/giphy.gif" width="70%">
+</p>
 
   
 ## Clone the source locally

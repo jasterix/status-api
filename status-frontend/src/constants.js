@@ -1,0 +1,10 @@
+const imgDiv = document.querySelector(".img-list");
+const submitButton = document.querySelector("input.submit");
+const saveButton = document.querySelector("#new-board-btn");
+const saveBoard = document.querySelector(".saveBoard-container");
+const saveBoardForm = document.querySelector(".save-board-form");
+const savedBoards = document.querySelector(".savedBoards");
+const tileContainer = document.querySelector(".cardContainer");
+let whole_board = [];
+let addBoard = false;
+let urls;
